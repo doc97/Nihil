@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 672643643}
   - component: {fileID: 672643644}
-  - component: {fileID: 672643645}
   - component: {fileID: 672643646}
   m_Layer: 0
   m_Name: Background-2
@@ -181,7 +180,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1503701773
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 116368ee480a3314482722ff9f7e885b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -193,24 +192,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &672643645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 672643642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640a6c7e10bfb1b459a7c8788e1ed1eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 920703325}
-  effect: 0.5
-  ignoreX: 0
-  ignoreY: 1
-  initialPosition: {x: 0, y: 0, z: 0}
-  initialDistance: {x: 0, y: 0, z: 0}
 --- !u!114 &672643646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +220,6 @@ GameObject:
   - component: {fileID: 920703326}
   - component: {fileID: 920703329}
   - component: {fileID: 920703328}
-  - component: {fileID: 920703331}
   - component: {fileID: 920703330}
   m_Layer: 0
   m_Name: Character
@@ -370,18 +350,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
---- !u!114 &920703331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920703325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5136a380d765c6c4f949925394b7e02e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &990710753
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +546,50 @@ MonoBehaviour:
   effect: 0.75
   ignoreX: 0
   ignoreY: 1
+--- !u!1 &1256208254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256208256}
+  - component: {fileID: 1256208255}
+  m_Layer: 0
+  m_Name: LevelControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1256208255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256208254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2580a5822390db848a23aab9adb9e884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Main
+--- !u!4 &1256208256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256208254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657953202
 GameObject:
   m_ObjectHideFlags: 0
