@@ -6,20 +6,26 @@ public class CharacterShooting : MonoBehaviour
 {
     public float bulletSpeed;
 
-    void Start()
-    {
-        
-    }
+    private bool isShooting;
 
+    void Update() {
+        if (Input.GetButtonDown("Shoot"))
+            isShooting = true;
+    }
     void FixedUpdate()
     {
-        if (Input.GetButtonDown("Shoot"))
+        if (isShooting)
         {
-            Vector3 direction = calculateBulletDirection();
-            Vector3 spawnPos = transform.position;
-            GameObject bulletPrefab = Resources.Load("Bullet", typeof(GameObject)) as GameObject;
-            spawnBullet(bulletPrefab, spawnPos, direction);
+            isShooting = false;
+            Shoot();
         }
+    }
+
+    private void Shoot() {
+        Vector3 direction = calculateBulletDirection();
+        Vector3 spawnPos = transform.position;
+        GameObject bulletPrefab = Resources.Load("Bullet", typeof(GameObject)) as GameObject;
+        spawnBullet(bulletPrefab, spawnPos, direction);
     }
 
     private Vector3 calculateBulletDirection()
