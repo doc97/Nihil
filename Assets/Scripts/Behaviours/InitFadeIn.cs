@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InitFadeIn : MonoBehaviour
 {
+    public float delay;
+
     private Animator animator;
 
     void Start()
@@ -17,9 +19,14 @@ public class InitFadeIn : MonoBehaviour
         StartCoroutine(DelayedFadeIn());
     }
 
+    void OnValidate()
+    {
+        delay = Mathf.Max(delay, 0);
+    }
+
     private IEnumerator DelayedFadeIn()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(delay);
         animator.SetBool("StartFadeIn", true);
     }
 }
