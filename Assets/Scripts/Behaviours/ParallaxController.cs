@@ -10,18 +10,17 @@ public class ParallaxController : MonoBehaviour
     public bool ignoreX;
     public bool ignoreY;
     private Vector3 initialPosition;
-    private Vector3 initialDistance;
+    private Vector3 initialTargetPosition;
 
     void Start()
     {
         initialPosition = transform.position;
-        initialDistance = target.transform.position - initialDistance;
+        initialTargetPosition = target.transform.position;
     }
 
     void FixedUpdate()
     {
-        Vector3 distance = target.transform.position - initialPosition;
-        Vector3 diff = distance - initialDistance;
+        Vector3 diff = target.transform.position - initialTargetPosition;
         if (ignoreX)
             diff.x = 0;
         if (ignoreY)
