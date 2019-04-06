@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2869113829266818670}
   - component: {fileID: 6134915931875281957}
+  - component: {fileID: 908914401781822368}
   m_Layer: 0
   m_Name: LevelControl
   m_TagString: Untagged
@@ -44,3 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Main
+--- !u!114 &908914401781822368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615317437863364608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04325c17e453760458f02c97198eaf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInTarget: {fileID: 0}
