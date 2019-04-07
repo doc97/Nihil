@@ -925,6 +925,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box-L
       objectReference: {fileID: 0}
+    - target: {fileID: 1712686407361228988, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1712686407361228991, guid: 538492a7de1a87c42abbe9c8f8735d06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -979,6 +984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099990837750596889, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 538492a7de1a87c42abbe9c8f8735d06, type: 3}
