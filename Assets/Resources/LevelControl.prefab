@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2580a5822390db848a23aab9adb9e884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Main
+  sceneName: Level1
 --- !u!114 &908914401781822368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04325c17e453760458f02c97198eaf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeInTarget: {fileID: 0}
+  fadeTarget: {fileID: 0}
+  character: {fileID: 0}
+  exitTrigger: {fileID: 0}
