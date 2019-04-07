@@ -18,7 +18,7 @@ public class ParallaxController : MonoBehaviour
         initialTargetPosition = target.transform.position;
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         Vector3 diff = target.transform.position - initialTargetPosition;
         if (ignoreX)
