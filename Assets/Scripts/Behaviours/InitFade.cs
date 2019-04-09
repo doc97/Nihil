@@ -11,13 +11,10 @@ public class InitFade : MonoBehaviour, IFadeListener
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    void Start()
+    void Awake()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Update()
-    {
     }
 
     void OnValidate()
@@ -39,19 +36,12 @@ public class InitFade : MonoBehaviour, IFadeListener
 
     private void InitializeFade()
     {
-        animator = GetComponent<Animator>();
         // Scale in editor is (0, 0, 1) to hide it
         // Set it big enough to cover the camera
         transform.localScale = new Vector3(4000, 3000, 1);
         ResetParameters();
         ActivateStartParameter();
-        StartCoroutine(DelayedFade());
-    }
-
-    private IEnumerator DelayedFade()
-    {
-        yield return new WaitForSeconds(delay);
-        ActivateDelayedParameter();
+        Invoke("ActivateDelayedParameter", delay);
     }
 
     private void ResetParameters()
@@ -86,28 +76,5 @@ public class InitFade : MonoBehaviour, IFadeListener
                 animator.SetTrigger("DelayedFadeOut");
                 break;
         }
-    }
-
-    private void ValidateAlpha()
-    {
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        if (renderer == null)
-            return;
-        switch (type)
-        {
-            case FadeType.FadeIn:
-                SetAlpha(renderer, 1);
-                break;
-            case FadeType.FadeOut:
-                SetAlpha(renderer, 0);
-                break;
-        }
-    }
-
-    private void SetAlpha(SpriteRenderer renderer, float a)
-    {
-        // Have to set both renderer.color and material.color for it to work
-        renderer.color = new Color(1, 1, 1, a);
-        renderer.material.color = new Color(1, 1, 1, a);
     }
 }
