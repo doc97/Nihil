@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class LineTextController : MonoBehaviour
 {
-    public float minLineDelaySec;
-    public float maxLineDelaySec;
+    [MinMaxRangeAttribute(0, 3)]
+    public MinMaxRange delayRange;
     public float finishDelaySec;
     public GameObject onFinishListener;
 
@@ -35,7 +35,7 @@ public class LineTextController : MonoBehaviour
         text.text = "";
         while (linesShown++ < lines.Length)
         {
-            float delaySec = GetRandomValue(minLineDelaySec, maxLineDelaySec);
+            float delaySec = delayRange.GetRandomValue();
             yield return new WaitForSeconds(delaySec);
 
             string newText = "";
@@ -52,11 +52,4 @@ public class LineTextController : MonoBehaviour
         ExecuteEvents.Execute<IStatusFinished>(onFinishListener, null, (x, y) => x.OnFinish());
     }
 
-    private float GetRandomValue(float min, float max)
-    {
-        double range = (double) max - (double) min;
-        double sample = rng.NextDouble();
-        double scaled = (double) min + (range * sample);
-        return (float) scaled;
-    }
 }
