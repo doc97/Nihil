@@ -1,56 +1,114 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class FadeController : MonoBehaviour
 {
-    public GameObject fadeTarget;
-    public GameObject character;
-    public Transform exitTrigger;
+    public float delay;
 
-    private SpriteRenderer targetRenderer;
-    private bool triggerOnFadeIn;
-    private bool triggerOnFadeOut;
+    private enum FadeType { FadeIn, FadeOut };
+    private FadeType type = FadeType.FadeIn;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private bool newFadeFinish;
 
-    void Start()
+    void Awake()
     {
-        targetRenderer = fadeTarget.GetComponent<SpriteRenderer>();
-        FadeIn();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void OnValidate()
+    {
+        delay = Mathf.Max(delay, 0);
+    }
+
+    void OnEnable()
+    {
+        Commands.FadeIn += StartFadeIn;
+        Commands.FadeOut += StartFadeOut;
+    }
+
+    void OnDisable()
+    {
+        Commands.FadeIn -= StartFadeIn;
+        Commands.FadeOut -= StartFadeOut;
     }
 
     void FixedUpdate()
     {
-        if (character.transform.position.x > exitTrigger.position.x)
-            FadeOut();
-        
-        if (triggerOnFadeIn && targetRenderer.color.a == 0)
-            OnFadeIn();
-        if (triggerOnFadeOut && targetRenderer.color.a == 1)
-            OnFadeOut();
+        CheckFinishedStatus();
     }
 
-    private void FadeIn()
+    private void StartFadeIn()
     {
-        triggerOnFadeIn = true;
-        ExecuteEvents.Execute<IFadeListener>(fadeTarget, null, (x, y) => x.StartFadeIn());
+        type = FadeType.FadeIn;
+        InitializeFade();
     }
 
-    private void FadeOut()
+    private void StartFadeOut()
     {
-        triggerOnFadeOut = true;
-        ExecuteEvents.Execute<IFadeListener>(fadeTarget, null, (x, y) => x.StartFadeOut());
+        type = FadeType.FadeOut;
+        InitializeFade();
     }
 
-    private void OnFadeIn()
+    private void InitializeFade()
     {
-        triggerOnFadeIn = false;
+        // Scale in editor is (0, 0, 1) to hide it
+        // Set it big enough to cover the camera
+        transform.localScale = new Vector3(4000, 3000, 1);
+        newFadeFinish = true;
+        ResetParameters();
+        ActivateStartParameter();
+        Invoke("ActivateDelayedParameter", delay);
     }
 
-    private void OnFadeOut()
+    private void ResetParameters()
     {
-        triggerOnFadeOut = false;
-        SceneManager.LoadScene("Intro", LoadSceneMode.Single);
+        animator.ResetTrigger("StartFadeIn");
+        animator.ResetTrigger("StartFadeOut");
+        animator.ResetTrigger("DelayedFadeIn");
+        animator.ResetTrigger("DelayedFadeOut");
+    }
+
+    private void ActivateStartParameter()
+    {
+        switch (type)
+        {
+            case FadeType.FadeIn:
+                animator.SetTrigger("StartFadeIn");
+                break;
+            case FadeType.FadeOut:
+                animator.SetTrigger("StartFadeOut");
+                break;
+        }
+    }
+
+    private void ActivateDelayedParameter()
+    {
+        switch (type)
+        {
+            case FadeType.FadeIn:
+                animator.SetTrigger("DelayedFadeIn");
+                break;
+            case FadeType.FadeOut:
+                animator.SetTrigger("DelayedFadeOut");
+                break;
+        }
+    }
+
+    private void CheckFinishedStatus()
+    {
+        if (!newFadeFinish)
+            return;
+
+        newFadeFinish = false;
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        if (info.IsName("FadeInFinished"))
+            Signals.EmitFadeInFinished();
+        else if (info.IsName("FadeOutFinished"))
+            Signals.EmitFadeOutFinished();
+        else
+            newFadeFinish = true;
     }
 }

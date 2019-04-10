@@ -10,7 +10,6 @@ public class LineTextController : MonoBehaviour
     [MinMaxRangeAttribute(0, 3)]
     public MinMaxRange delayRange;
     public float finishDelaySec;
-    public GameObject onFinishListener;
 
     private System.Random rng;
     private Text text;
@@ -44,12 +43,6 @@ public class LineTextController : MonoBehaviour
             text.text = newText;
         }
         yield return new WaitForSeconds(finishDelaySec);
-        OnFinish();
+        Signals.EmitIntroFinished();
     }
-
-    private void OnFinish()
-    {
-        ExecuteEvents.Execute<IStatusFinished>(onFinishListener, null, (x, y) => x.OnFinish());
-    }
-
 }

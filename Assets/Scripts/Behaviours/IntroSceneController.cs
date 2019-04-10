@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IntroSceneController : MonoBehaviour, IStatusFinished
+public class IntroSceneController : MonoBehaviour
 {
-    public void OnFinish()
+    void OnEnable()
     {
-        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+        Signals.OnIntroFinished += SwitchScene;
+    }
+
+    void OnDisable()
+    {
+        Signals.OnIntroFinished -= SwitchScene;
+    }
+
+    private void SwitchScene()
+    {
+        SceneManager.LoadScene("Level1");
     }
 }

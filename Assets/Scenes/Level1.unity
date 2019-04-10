@@ -836,6 +836,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1615317437863364608, guid: 84f31d7b5b284b24d8d9cafc24978053,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelControl
+      objectReference: {fileID: 0}
     - target: {fileID: 908914401781822368, guid: 84f31d7b5b284b24d8d9cafc24978053,
         type: 3}
       propertyPath: fadeTarget
@@ -851,11 +856,6 @@ PrefabInstance:
       propertyPath: exitTrigger
       value: 
       objectReference: {fileID: 932399426}
-    - target: {fileID: 1615317437863364608, guid: 84f31d7b5b284b24d8d9cafc24978053,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelControl
-      objectReference: {fileID: 0}
     - target: {fileID: 2869113829266818670, guid: 84f31d7b5b284b24d8d9cafc24978053,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,16 +1128,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9166256709655834459, guid: 540d29c07b8c67843b6ac199455115b1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4233748152549874236, guid: 540d29c07b8c67843b6ac199455115b1,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 512702876740645330}
+    - target: {fileID: 9166256709655834459, guid: 540d29c07b8c67843b6ac199455115b1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 540d29c07b8c67843b6ac199455115b1, type: 3}
 --- !u!1001 &5059967968215782479
