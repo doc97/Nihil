@@ -11,10 +11,30 @@ public class CharacterMovement : MonoBehaviour
 
     private bool isMoving;
 
+    public Transform[] groundPoints;
+
+    public float groundRadius;
+
+    public LayerMask whatIsGround;
+
+    private bool isGrounded;
+
+    private bool jump;
+
+    public float jumpForce;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if ( Input.GetKeyDown(KeyCode.Space) )
+        {
+            jump = true;
+        }
     }
 
     void FixedUpdate()
@@ -22,6 +42,8 @@ public class CharacterMovement : MonoBehaviour
         float movement = Input.GetAxis("Move");
         body.velocity = new Vector2(movement * maxSpeed, body.velocity.y);
         animator.speed = Mathf.Abs(body.velocity.x / maxSpeed);
+
+        isGrounded = IsGrounded();
 
         if (movement == 0 && isMoving)
         {
@@ -36,6 +58,14 @@ public class CharacterMovement : MonoBehaviour
         }
 
         SetFaceDirection(movement);
+
+        if ( isGrounded && jump )
+        {
+            Debug.Log("Jump!");
+            isGrounded = false;
+            body.AddForce(new Vector2(0, jumpForce));
+            jump = false;
+        }
     }
 
     private void OnStop()
@@ -51,5 +81,25 @@ public class CharacterMovement : MonoBehaviour
         Vector3 currentScale = transform.localScale;
         currentScale.x = movement == 0 ? currentScale.x : Mathf.Sign(movement);
         transform.localScale = currentScale;
+    }
+
+    private bool IsGrounded()
+    {
+        if ( body.velocity.y <= 0 )
+        {
+            foreach ( Transform point in groundPoints )
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
+
+                for ( int i = 0 ; i < colliders.Length; i++)
+                {
+                    if ( colliders[i].gameObject != gameObject )
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
