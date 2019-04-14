@@ -61,7 +61,6 @@ public class CharacterMovement : MonoBehaviour
 
         if ( isGrounded && jump )
         {
-            Debug.Log("Jump!");
             isGrounded = false;
             body.AddForce(new Vector2(0, jumpForce));
             jump = false;
