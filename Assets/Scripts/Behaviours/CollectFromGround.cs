@@ -7,11 +7,12 @@ public class CollectFromGround : MonoBehaviour
 
     public Transform character;
     public float distanceThreshold = 5;
-    public float maxSpeed = 15;
+    public float acceleration = 2;
 
     private Rigidbody2D body;
     private CircleCollider2D circleCollider;
     private float initialGravity;
+    private bool isBeingCollected;
 
     void Start()
     {
@@ -23,19 +24,29 @@ public class CollectFromGround : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 distance = (character.position - transform.position);
-        float speedPercent = Mathf.Clamp01((distanceThreshold - distance.magnitude) / distanceThreshold);
-        float velocity = Mathf.Lerp(0, maxSpeed, speedPercent);
-        bool isBeingCollected = velocity != 0;
+        float distancePercent = Mathf.Clamp01(distance.magnitude / distanceThreshold);
 
-        // Lessen gravity when being collected
-        body.gravityScale = isBeingCollected ? 0 : initialGravity;
-
-        // Make it a trigger when being collected to avoid pushing
-        // the character upon impact
-        circleCollider.isTrigger = isBeingCollected;
+        // Start collecting it as soon as character is within range
+        if (distance.magnitude < distanceThreshold)
+        {
+            // Ignore gravity when being collected
+            body.gravityScale = 0;
+            // Make it a trigger when being collected to avoid pushing
+            // the character upon impact
+            circleCollider.isTrigger = true;
+            isBeingCollected = true;
+        }
 
         if (isBeingCollected)
-            body.velocity = Vector3.Lerp(body.velocity, distance.normalized * velocity, speedPercent);
+        {
+            Vector3 velocity3 = distance.normalized * acceleration;
+            Vector2 velocity2 = new Vector2(velocity3.x, velocity3.y);
+            Vector2 normal = new Vector2(-velocity2.y, velocity3.x).normalized;
+
+            float dot = Vector2.Dot(normal, body.velocity);
+            body.velocity += velocity2;
+            body.velocity -= normal * dot / 2; // decrease tangential velocity by half
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

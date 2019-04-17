@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ScrapFountain : MonoBehaviour
 {
-    [MinMaxRangeAttribute(0, 3)]
+    [MinMaxRangeAttribute(0, 10)]
     public MinMaxRange speedRange;
     public float initialDelaySec;
     public float delaySec;
     public Transform character;
     public float distanceThreshold = 5;
-    public float maxSpeed = 15;
+    public float acceleration = 2;
 
     private GameObject scrapPrefab;
 
@@ -25,7 +25,7 @@ public class ScrapFountain : MonoBehaviour
     {
         CollectFromGround script = scrapPrefab.GetComponent<CollectFromGround>();
         script.character = character;
-        script.maxSpeed = maxSpeed;
+        script.acceleration = acceleration;
         script.distanceThreshold = distanceThreshold;
     }
 

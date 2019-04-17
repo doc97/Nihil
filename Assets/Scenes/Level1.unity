@@ -1050,13 +1050,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRange:
-    rangeStart: 0
-    rangeEnd: 3
+    rangeStart: 3
+    rangeEnd: 5
   initialDelaySec: 5
   delaySec: 2
   character: {fileID: 1544613418}
   distanceThreshold: 5
-  maxSpeed: 20
+  acceleration: 0.5
 --- !u!4 &1615054740
 Transform:
   m_ObjectHideFlags: 0
