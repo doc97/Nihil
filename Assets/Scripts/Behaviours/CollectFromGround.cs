@@ -5,20 +5,24 @@ using UnityEngine;
 public class CollectFromGround : MonoBehaviour
 {
 
-    public Transform character;
-    public float distanceThreshold = 5;
-    public float acceleration = 2;
-
+    private Transform character;
+    private float distanceThreshold = 5;
+    private float acceleration = 2;
     private Rigidbody2D body;
     private CircleCollider2D circleCollider;
-    private float initialGravity;
     private bool isBeingCollected;
+
+    public void Init(Transform character, float distanceThreshold, float acceleration)
+    {
+        this.character = character;
+        this.distanceThreshold = distanceThreshold;
+        this.acceleration = acceleration;
+    }
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
-        initialGravity = body.gravityScale;
     }
     
     void FixedUpdate()

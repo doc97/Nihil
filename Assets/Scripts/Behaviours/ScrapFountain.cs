@@ -24,9 +24,7 @@ public class ScrapFountain : MonoBehaviour
     private void configurePrefab()
     {
         CollectFromGround script = scrapPrefab.GetComponent<CollectFromGround>();
-        script.character = character;
-        script.acceleration = acceleration;
-        script.distanceThreshold = distanceThreshold;
+        script.Init(character, distanceThreshold, acceleration);
     }
 
     private void SpawnScraps()

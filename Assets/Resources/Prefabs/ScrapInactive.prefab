@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1653588457569543393}
   - component: {fileID: 7243357492110745490}
   - component: {fileID: 7243357492110745489}
-  - component: {fileID: 7243357492110745491}
+  - component: {fileID: 4405135225256802622}
   m_Layer: 9
-  m_Name: Scrap
+  m_Name: ScrapInactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,13 +113,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &7243357492110745491
+--- !u!114 &4405135225256802622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,10 +128,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7243357492110745488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f42742697319dc41ba41cbdc32c3a56, type: 3}
+  m_Script: {fileID: 11500000, guid: 803366c21a7dee844b0279c9be86fad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  activeDelay: 2
-  distanceThreshold: 5
-  acceleration: 2

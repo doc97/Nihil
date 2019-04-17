@@ -10,6 +10,6 @@ public class ResetScene : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Reset"))
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
     }
 }
