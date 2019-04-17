@@ -7,6 +7,7 @@ public static class GameState
 
     private static WeaponData[] weapons;
     private static CharacterData characterData;
+    private static CharacterResources resources;
 
     static GameState()
     {
@@ -15,16 +16,17 @@ public static class GameState
             new WeaponData("Pistol", 2)
         };
         characterData = new CharacterData(100, 5, weapons[0]);
+        resources = new CharacterResources(0);
     }
 
     public static void IncrementHealth(uint delta = 1)
     {
-        SetHealth(characterData.Health + delta);
+        characterData.Health += delta;
     }
 
     public static void DecrementHealth(uint delta = 1)
     {
-        SetHealth(characterData.Health - delta);
+        characterData.Health -= delta;
     }
 
     public static void SetHealth(uint health)
@@ -38,6 +40,21 @@ public static class GameState
         return characterData.Health;
     }
 
+    public static void IncrementEnergy(uint delta = 1)
+    {
+        characterData.Energy += delta;
+    }
+
+    public static void DecrementEnergy(uint delta = 1)
+    {
+        characterData.Energy -= delta;
+    }
+
+    public static void SetEnergy(uint energy)
+    {
+        characterData.Energy = energy;
+    }
+
     public static uint GetEnergy()
     {
         return characterData.Energy;
@@ -46,5 +63,24 @@ public static class GameState
     public static int GetDamage()
     {
         return characterData.Weapon.damage;
+    }
+
+    public static void IncrementScrap(uint delta = 1)
+    {
+        resources.Scrap += delta;
+    }
+
+    public static void DecrementScrap(uint delta = 1)
+    {
+        resources.Scrap -= delta;
+    }
+
+    public static void SetScrap(uint scrap)
+    {
+        resources.Scrap = scrap;
+    }
+    public static uint GetScrap()
+    {
+        return resources.Scrap;
     }
 }

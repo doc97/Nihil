@@ -1,4 +1,4 @@
 public enum UIMessage
 {
-    UpdateHealth,
+    UpdateHealth, UpdateEnergy, UpdateScrap,
 }
