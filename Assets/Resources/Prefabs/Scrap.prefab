@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7243357492110745490}
   - component: {fileID: 7243357492110745489}
   - component: {fileID: 7243357492110745491}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Scrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,3 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
+  distanceThreshold: 5
+  maxSpeed: 15

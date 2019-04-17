@@ -10,11 +10,13 @@ public class CollectFromGround : MonoBehaviour
     public float maxSpeed = 15;
 
     private Rigidbody2D body;
+    private CircleCollider2D circleCollider;
     private float initialGravity;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         initialGravity = body.gravityScale;
     }
     
@@ -25,15 +27,20 @@ public class CollectFromGround : MonoBehaviour
         float velocity = Mathf.Lerp(0, maxSpeed, speedPercent);
         bool isBeingCollected = velocity != 0;
 
-        // Disable gravity when being collected
+        // Lessen gravity when being collected
         body.gravityScale = isBeingCollected ? 0 : initialGravity;
+
+        // Make it a trigger when being collected to avoid pushing
+        // the character upon impact
+        circleCollider.isTrigger = isBeingCollected;
+
         if (isBeingCollected)
-            body.velocity = distance.normalized * velocity;
+            body.velocity = Vector3.Lerp(body.velocity, distance.normalized * velocity, speedPercent);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (col.gameObject.transform == character)
+        if (other.gameObject.transform == character)
         {
             GameState.IncrementScrap();
             Destroy(gameObject);
