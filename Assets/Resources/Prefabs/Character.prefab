@@ -214,7 +214,7 @@ MonoBehaviour:
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 1079
   jumpForce: 600
 --- !u!114 &5059967967342344811
 MonoBehaviour:
