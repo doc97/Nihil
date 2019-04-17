@@ -22,11 +22,13 @@ public static class GameState
     public static void IncrementHealth(uint delta = 1)
     {
         characterData.Health += delta;
+        UIMessages.Notify(UIMessage.UpdateHealth, characterData.Health);
     }
 
     public static void DecrementHealth(uint delta = 1)
     {
         characterData.Health -= delta;
+        UIMessages.Notify(UIMessage.UpdateHealth, characterData.Health);
     }
 
     public static void SetHealth(uint health)
@@ -43,16 +45,19 @@ public static class GameState
     public static void IncrementEnergy(uint delta = 1)
     {
         characterData.Energy += delta;
+        UIMessages.Notify(UIMessage.UpdateEnergy, characterData.Energy);
     }
 
     public static void DecrementEnergy(uint delta = 1)
     {
         characterData.Energy -= delta;
+        UIMessages.Notify(UIMessage.UpdateEnergy, characterData.Energy);
     }
 
     public static void SetEnergy(uint energy)
     {
         characterData.Energy = energy;
+        UIMessages.Notify(UIMessage.UpdateEnergy, characterData.Energy);
     }
 
     public static uint GetEnergy()
@@ -68,16 +73,19 @@ public static class GameState
     public static void IncrementScrap(uint delta = 1)
     {
         resources.Scrap += delta;
+        UIMessages.Notify(UIMessage.UpdateScrap, resources.Scrap);
     }
 
     public static void DecrementScrap(uint delta = 1)
     {
         resources.Scrap -= delta;
+        UIMessages.Notify(UIMessage.UpdateScrap, resources.Scrap);
     }
 
     public static void SetScrap(uint scrap)
     {
         resources.Scrap = scrap;
+        UIMessages.Notify(UIMessage.UpdateScrap, resources.Scrap);
     }
     public static uint GetScrap()
     {
