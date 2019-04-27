@@ -57,7 +57,7 @@ public class CharacterShooting : MonoBehaviour
         shoulder.localRotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
 
         // Flip X if we're looking backwards
-        transform.rotation = Quaternion.AngleAxis(flipX ? 180 : 0, Vector3.up);
+        transform.localScale = new Vector3(flipX ? -1 : 1, 1, 1);
     }
 
     private void Shoot() {

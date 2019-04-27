@@ -77,9 +77,9 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void SetFaceDirection(float movement) {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x = movement == 0 ? currentScale.x : Mathf.Sign(movement);
-        transform.localScale = currentScale;
+        bool isForward = (transform.localScale.x == 1 && movement > 0) ||
+                         (transform.localScale.x == -1 && movement < 0); 
+        animator.SetBool("IsForward", isForward);
     }
 
     private bool IsGrounded()
