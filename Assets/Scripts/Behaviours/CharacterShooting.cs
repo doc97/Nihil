@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class CharacterShooting : MonoBehaviour
 {
+    [Range(0, 180)]
+    public float aimAngleDeg;
     public float bulletSpeed;
     public Transform hand;
     public Transform elbow;
     public Transform shoulder;
 
+    private SpriteRenderer bodySprite;
+    private SpriteRenderer armSprite;
     private float shoulderToElbowDistance;
     private float elbowAngleRad;
     private bool isShooting;
 
     void Start()
     {
+        bodySprite = GetComponent<SpriteRenderer>();
+        armSprite = shoulder.GetComponent<SpriteRenderer>();
+
         Vector2 elbowToHand = hand.position - elbow.position;
         Vector2 elbowToShoulder = shoulder.position - elbow.position;
         shoulderToElbowDistance = elbowToShoulder.magnitude;
@@ -40,12 +47,17 @@ public class CharacterShooting : MonoBehaviour
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 jointPos = shoulder.position;
-        float distance = (mousePos - jointPos).magnitude;
-        float deltaY = mousePos.y - jointPos.y;
+        Vector2 jointToMouse = mousePos - jointPos;
+        float distance = jointToMouse.magnitude;
+        bool flipX = jointToMouse.x < 0;
 
-        float angleRad = Mathf.Asin(Mathf.Sin(elbowAngleRad) * shoulderToElbowDistance / distance) + Mathf.Asin(deltaY / distance);
-        float angleDeg = angleRad * Mathf.Rad2Deg;
-        shoulder.rotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
+        float angleRad = Mathf.Asin(Mathf.Sin(elbowAngleRad) * shoulderToElbowDistance / distance)
+            + Mathf.Asin(jointToMouse.y / distance);
+        float angleDeg = MathUtil.ClampAngleDeg(angleRad * Mathf.Rad2Deg, aimAngleDeg / 2, -aimAngleDeg / 2);
+        shoulder.localRotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
+
+        // Flip X if we're looking backwards
+        transform.rotation = Quaternion.AngleAxis(flipX ? 180 : 0, Vector3.up);
     }
 
     private void Shoot() {

@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b297fb139375042932dd3641b14cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimAngleDeg: 60
   bulletSpeed: 32
   hand: {fileID: 1653508096207621890}
   elbow: {fileID: 8354190208963291021}
@@ -411,7 +412,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 087b5852e4548234c801820613180e7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
