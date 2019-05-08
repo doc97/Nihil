@@ -62,7 +62,7 @@ public class CharacterShooting : MonoBehaviour
 
     private void Shoot() {
         Vector3 direction = calculateBulletDirection();
-        GameObject bulletPrefab = Resources.Load("Prefabs/Bullet", typeof(GameObject)) as GameObject;
+        GameObject bulletPrefab = Resources.Load("Prefabs/CharacterBullet", typeof(GameObject)) as GameObject;
         spawnBullet(bulletPrefab, hand.position, direction);
     }
 
