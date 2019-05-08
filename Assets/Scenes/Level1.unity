@@ -1530,6 +1530,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1712686407361228988, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1712686407361228991, guid: 538492a7de1a87c42abbe9c8f8735d06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1589,6 +1594,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099990837750596889, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593622867699238693, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593622866731012421, guid: 538492a7de1a87c42abbe9c8f8735d06,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 538492a7de1a87c42abbe9c8f8735d06, type: 3}
@@ -1811,6 +1831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shoulder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059967967342344810, guid: 09c37bb2320344b4890605ac395857d5,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 1078
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c37bb2320344b4890605ac395857d5, type: 3}
