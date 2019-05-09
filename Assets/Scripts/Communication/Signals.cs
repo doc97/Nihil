@@ -8,4 +8,8 @@ public static class Signals
     public static void EmitFadeOutFinished() { OnFadeOutFinished?.Invoke(); }
     public static event Action OnIntroFinished;
     public static void EmitIntroFinished() { OnIntroFinished?.Invoke(); }
+    public static event Action OnPlayRequested;
+    public static void EmitPlayRequested() { OnPlayRequested?.Invoke(); }
+    public static event Action OnQuitRequested;
+    public static void EmitQuitRequested() { OnQuitRequested?.Invoke(); }
 }
