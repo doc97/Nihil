@@ -197,7 +197,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 5ba7d7c56dd029f4ba3d6a67bec54303, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &5059967967342344809
 BoxCollider2D:
@@ -245,8 +245,8 @@ MonoBehaviour:
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1079
-  jumpForce: 600
+    m_Bits: 1078
+  jumpForce: 580
 --- !u!114 &5059967967342344811
 MonoBehaviour:
   m_ObjectHideFlags: 0

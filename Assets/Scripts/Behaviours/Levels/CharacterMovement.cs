@@ -84,7 +84,7 @@ public class CharacterMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        if ( body.velocity.y <= 0 )
+        if ( body.velocity.y == 0 )
         {
             foreach ( Transform point in groundPoints )
             {
