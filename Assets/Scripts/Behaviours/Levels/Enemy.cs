@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public LayerMask collisionMask;
     public Transform player;
     public int lifeEnemy = 100;
     public float minDistance = 8.5f;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "CharacterBullet(Clone)")
+        if (LayerUtil.IsInLayerMask(collisionMask, col.gameObject.layer))
         {
             lifeEnemy -= 10;
             if (lifeEnemy <= 0)

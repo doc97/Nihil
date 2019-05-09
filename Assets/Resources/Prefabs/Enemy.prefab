@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9410cc161a660064cb6dc5b10876dd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4096
   player: {fileID: 0}
   lifeEnemy: 100
   minDistance: 12

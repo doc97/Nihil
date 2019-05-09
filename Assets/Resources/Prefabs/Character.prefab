@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 5059967967342344809}
   - component: {fileID: 5059967967342344810}
   - component: {fileID: 5059967967342344811}
+  - component: {fileID: 1455196398833023319}
   - component: {fileID: 1544613418}
   m_Layer: 8
   m_Name: Character
@@ -264,6 +265,21 @@ MonoBehaviour:
   hand: {fileID: 1653508096207621890}
   elbow: {fileID: 8354190208963291021}
   shoulder: {fileID: 326424079186992285}
+--- !u!114 &1455196398833023319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059967967342344812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96aa345221e633409105b4708191a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!95 &1544613418
 Animator:
   serializedVersion: 3
