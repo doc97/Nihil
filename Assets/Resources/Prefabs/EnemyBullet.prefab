@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2288714555415137920}
   - component: {fileID: 5234542825712393356}
   - component: {fileID: 2771495842800614263}
-  - component: {fileID: 553141197585434707}
+  - component: {fileID: 2846551840565164191}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -119,7 +119,7 @@ CircleCollider2D:
   m_Offset: {x: 0.145, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
---- !u!114 &553141197585434707
+--- !u!114 &2846551840565164191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,6 +128,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2639198619117721093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0059efb286f0140ac7d8084aac4889, type: 3}
+  m_Script: {fileID: 11500000, guid: d756c837bbd754146a4a9c20844c221a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
