@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollideBullet : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public int lifeEnemy = 100;
-
     public Transform player;
-
+    public int lifeEnemy = 100;
     public float minDistance = 8.5f;
+    public int bulletSpeed = 8;
+    public int fireRateTicks = 40;
 
-    public int bulletSpeed = 32;
-
-    public int timer = 0;
+    private int timer;
 
 
     // Start is called before the first frame update
@@ -24,12 +22,9 @@ public class EnemyCollideBullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        timer ++;
         float distance = (player.position - transform.position).magnitude;
-        if (distance < minDistance && timer % 40 == 0 )
-        {
+        if (distance < minDistance && ++timer % fireRateTicks == 0 )
             Shoot();
-        }
     }
 
        
@@ -48,12 +43,11 @@ public class EnemyCollideBullet : MonoBehaviour
         bulletBody.velocity = direction * bulletSpeed;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.name == "CharacterBullet(Clone)")
         {
             lifeEnemy -= 10;
-            Destroy(col.gameObject);
             if (lifeEnemy <= 0)
             {
                 Destroy(gameObject);

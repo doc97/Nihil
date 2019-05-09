@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Character
   - Pickups
   - Ground
-  - 
-  - 
+  - EnemyBullet
+  - CharacterBullet
   - 
   - 
   - 

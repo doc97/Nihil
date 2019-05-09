@@ -51,8 +51,12 @@ public class CharacterShooting : MonoBehaviour
         float distance = jointToMouse.magnitude;
         bool flipX = jointToMouse.x < 0;
 
-        float angleRad = Mathf.Asin(Mathf.Sin(elbowAngleRad) * shoulderToElbowDistance / distance)
-            + Mathf.Asin(jointToMouse.y / distance);
+        float angleRad = 0;
+        if (distance > 0)
+        {
+            angleRad = Mathf.Asin(Mathf.Sin(elbowAngleRad) * shoulderToElbowDistance / distance)
+                     + Mathf.Asin(jointToMouse.y / distance);
+        }
         float angleDeg = MathUtil.ClampAngleDeg(angleRad * Mathf.Rad2Deg, aimAngleDeg / 2, -aimAngleDeg / 2);
         shoulder.localRotation = Quaternion.AngleAxis(angleDeg, Vector3.forward);
 
